@@ -31,12 +31,14 @@ docker_container "influxdb" do
 	image "#{node[:influxdb][:docker_image]}:#{node[:influxdb][:docker_image_tag]}"
 	container_name node[:influxdb][:docker_container]
 	detach true
-	expose ['8090', '8099'] # Only used for clustering purposes and should not be exposed to the internet
-	port [ "#{node[:influxdb][:config][:port]}:#{node[:influxdb][:config][:port]}",
-	       "#{node[:influxdb][:config][:admin][:port]}:#{node[:influxdb][:config][:admin][:port]}" ]
-	volume [
-		"#{node[:influxdb][:config_path]}/config.toml:#{node[:influxdb][:container_config_path]}/config.toml",
-		"#{node[:influxdb][:data_path]}:#{node[:influxdb][:container_data_path]}"]
+	expose [ "#{node[:influxdb][:config][:admin][:port]}",
+					 "#{node[:influxdb][:config][:http][:port]}",
+					 '8090', '8099']
+					 # Ports [8090, 8099] only used for clustering purposes and should not be exposed
+	port   [ "#{node[:influxdb][:config][:admin][:port]}:#{node[:influxdb][:config][:admin][:port]}",
+				   "#{node[:influxdb][:config][:http][:port]}:#{node[:influxdb][:config][:http][:port]}" ]
+	volume [ "#{node[:influxdb][:config_path]}/config.toml:#{node[:influxdb][:container_config_path]}/config.toml",
+				   "#{node[:influxdb][:data_path]}:#{node[:influxdb][:container_data_path]}"]
 end
 
 service "influxdb" do

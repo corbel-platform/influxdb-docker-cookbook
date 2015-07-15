@@ -1,69 +1,97 @@
-bind-address = "<%= @config['bind_address'] %>"
-port = <%= @config['port'] %>
 reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [meta]
   dir = "<%= @config['meta']['dir'] %>"
-
-[initialization]
-  join-urls = "<%= @config['initialization']['join_urls'] %>"
-
-[authentication]
-  enabled = <%= @config['authentication']['enabled'] %>
-
-[admin]
-  enabled = <%= @config['admin']['enabled'] %>
-  port    = <%= @config['admin']['port'] %>
-  assets  = "<%= @config['admin']['assets'] %>"
-
-[api]
-  bind-address = "<%= @config['api']['bind_address'] %>"
-  port     = <%= @config['api']['port'] %>
-
-[collectd]
-  enabled = <%= @config['collectd']['enabled'] %>
-
-[opentsdb]
-  enabled = <%= @config['opentsdb']['enabled'] %>
-
-[udp]
-  enabled = <%= @config['udp']['enabled'] %>
-
-[broker]
-  dir     = "<%= @config['broker']['dir'] %>"
-  enabled = <%= @config['broker']['enabled'] %>
-  election-timeout  = "<%= @config['broker']['election_timeout'] %>"
+  hostname = "<%= @config['meta']['hostname'] %>"
+  bind-address = "<%= @config['meta']['bind_address'] %>"
+  retention-autocreate = <%= @config['meta']['retention_autocreate'] %>
+  election-timeout = "<%= @config['meta']['election_timeout'] %>"
+  heartbeat-timeout = "<%= @config['meta']['heartbeat_timeout'] %>"
+  leader-lease-timeout = "<%= @config['meta']['leader_lease_timeout'] %>"
+  commit-timeout = "<%= @config['meta']['commit_timeout'] %>"
 
 [data]
-  dir     = "<%= @config['data']['dir'] %>"
-  enabled = <%= @config['data']['enabled'] %>
+  dir = "<%= @config['data']['dir'] %>"
+  max-wal-size = <%= @config['data']['max_wal_size'] %>
+  wal-flush-interval = "<%= @config['data']['wal_flush_interval'] %>"
+  wal-partition-flush-delay = "<%= @config['data']['wal_partition_flush_delay'] %>"
   retention-auto-create = <%= @config['data']['retention_auto_create'] %>
   retention-check-enabled = <%= @config['data']['retention_check_enabled'] %>
   retention-check-period = "<%= @config['data']['retention_check_period'] %>"
   retention-create-period = "<%= @config['data']['retention_create_period'] %>"
 
-[snapshot]
-  enabled = <%= @config['snapshot']['enabled'] %>
+[cluster]
+  shard-writer-timeout = "<%= @config['cluster']['shard_writer_timeout'] %>"
 
-[logging]
-  write-tracing  = <%= @config['logging']['write_tracing'] %>
-  raft-tracing  = <%= @config['logging']['raft_tracing'] %>
-  level  = "<%= @config['logging']['level'] %>"
-  file   = "<%= @config['logging']['file'] %>"
+[retention]
+  enabled = <%= @config['retention']['enabled'] %>
+  check-interval = "<%= @config['retention']['check_interval'] %>"
+
+[shard-precreation]
+  enabled = <%= @config['shard_precreation']['enabled'] %>
+  check-interval = "<%= @config['shard_precreation']['check_interval'] %>"
+  advance-period = "<%= @config['shard_precreation']['advance_period'] %>"
+
+[admin]
+  enabled = <%= @config['admin']['enabled'] %>
+  bind-address = "<%= @config['admin']['bind_address'] %>"
+
+[http]
+  enabled = <%= @config['http']['enabled'] %>
+  bind-address = "<%= @config['http']['bind_address'] %>"
+  auth-enabled = <%= @config['http']['auth_enabled'] %>
+  log-enabled = <%= @config['http']['log_enabled'] %>
+  write-tracing = <%= @config['http']['write_tracing'] %>
+  pprof-enabled = <%= @config['http']['pprof_enabled'] %>
+
+[[graphite]]
+  enabled = <%= @config['graphite']['enabled'] %>
+  bind-address = "<%= @config['graphite']['bind_address'] %>"
+  database = "<%= @config['graphite']['database'] %>"
+  protocol = "<%= @config['graphite']['protocol'] %>"
+  batch-size = <%= @config['graphite']['batch_size'] %>
+  batch-timeout = "<%= @config['graphite']['batch_timeout'] %>"
+  consistency-level = "<%= @config['graphite']['consistency_level'] %>"
+  separator = "<%= @config['graphite']['separator'] %>"
+
+[collectd]
+  enabled = <%= @config['collectd']['enabled'] %>
+  bind-address = "<%= @config['collectd']['bind_address'] %>"
+  database = "<%= @config['collectd']['database'] %>"
+  retention-policy = "<%= @config['collectd']['retention_policy'] %>"
+  batch-size = <%= @config['collectd']['batch_size'] %>
+  batch-timeout = "<%= @config['collectd']['batch_timeout'] %>"
+  typesdb = "<%= @config['collectd']['typesdb'] %>"
+
+[opentsdb]
+  enabled = <%= @config['opentsdb']['enabled'] %>
+  bind-address = "<%= @config['opentsdb']['bind_address'] %>"
+  database = "<%= @config['opentsdb']['database'] %>"
+  retention-policy = "<%= @config['opentsdb']['retention_policy'] %>"
+  consistency-level = "<%= @config['opentsdb']['consistency_level'] %>"
+
+[udp]
+  enabled = <%= @config['udp']['enabled'] %>
+  bind-address = "<%= @config['udp']['bind_address'] %>"
+  database = "<%= @config['udp']['database'] %>"
+  batch-size = <%= @config['udp']['batch_size'] %>
+  batch-timeout = "<%= @config['udp']['batch_timeout'] %>"
 
 [monitoring]
   enabled = <%= @config['monitoring']['enabled'] %>
-
-[debugging]
-  pprof-enabled = <%= @config['debugging']['pprof_enabled'] %>
+  write-interval = "<%= @config['monitoring']['write_interval'] %>"
 
 [continuous_queries]
+  enabled = <%= @config['continuous_queries']['enabled'] %>
   recompute-previous-n = <%= @config['continuous_queries']['recompute_previous_n'] %>
-  recompute-no-older-than   = "<%= @config['continuous_queries']['recompute_no_older_than'] %>"
+  recompute-no-older-than = "<%= @config['continuous_queries']['recompute_no_older_than'] %>"
   compute-runs-per-interval = <%= @config['continuous_queries']['compute_runs_per_interval'] %>
   compute-no-more-than = "<%= @config['continuous_queries']['compute_no_more_than'] %>"
-  disabled = <%= @config['continuous_queries']['disabled'] %>
 
 [hinted-handoff]
   enabled = <%= @config['hinted_handoff']['enabled'] %>
-  dir     = "<%= @config['hinted_handoff']['dir'] %>"
+  dir = "<%= @config['hinted_handoff']['dir'] %>"
+  max-size = <%= @config['hinted_handoff']['max_size'] %>
+  max-age = "<%= @config['hinted_handoff']['max_age'] %>"
+  retry-rate-limit = <%= @config['hinted_handoff']['retry_rate_limit'] %>
+  retry-interval = "<%= @config['hinted_handoff']['retry_interval'] %>"
