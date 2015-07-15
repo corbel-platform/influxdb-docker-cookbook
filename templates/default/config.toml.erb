@@ -1,0 +1,69 @@
+bind-address = "<%= @config['bind_address'] %>"
+port = <%= @config['port'] %>
+reporting-disabled = <%= @config['reporting_disabled'] %>
+
+[meta]
+  dir = "<%= @config['meta']['dir'] %>"
+
+[initialization]
+  join-urls = "<%= @config['initialization']['join_urls'] %>"
+
+[authentication]
+  enabled = <%= @config['authentication']['enabled'] %>
+
+[admin]
+  enabled = <%= @config['admin']['enabled'] %>
+  port    = <%= @config['admin']['port'] %>
+  assets  = "<%= @config['admin']['assets'] %>"
+
+[api]
+  bind-address = "<%= @config['api']['bind_address'] %>"
+  port     = <%= @config['api']['port'] %>
+
+[collectd]
+  enabled = <%= @config['collectd']['enabled'] %>
+
+[opentsdb]
+  enabled = <%= @config['opentsdb']['enabled'] %>
+
+[udp]
+  enabled = <%= @config['udp']['enabled'] %>
+
+[broker]
+  dir     = "<%= @config['broker']['dir'] %>"
+  enabled = <%= @config['broker']['enabled'] %>
+  election-timeout  = "<%= @config['broker']['election_timeout'] %>"
+
+[data]
+  dir     = "<%= @config['data']['dir'] %>"
+  enabled = <%= @config['data']['enabled'] %>
+  retention-auto-create = <%= @config['data']['retention_auto_create'] %>
+  retention-check-enabled = <%= @config['data']['retention_check_enabled'] %>
+  retention-check-period = "<%= @config['data']['retention_check_period'] %>"
+  retention-create-period = "<%= @config['data']['retention_create_period'] %>"
+
+[snapshot]
+  enabled = <%= @config['snapshot']['enabled'] %>
+
+[logging]
+  write-tracing  = <%= @config['logging']['write_tracing'] %>
+  raft-tracing  = <%= @config['logging']['raft_tracing'] %>
+  level  = "<%= @config['logging']['level'] %>"
+  file   = "<%= @config['logging']['file'] %>"
+
+[monitoring]
+  enabled = <%= @config['monitoring']['enabled'] %>
+
+[debugging]
+  pprof-enabled = <%= @config['debugging']['pprof_enabled'] %>
+
+[continuous_queries]
+  recompute-previous-n = <%= @config['continuous_queries']['recompute_previous_n'] %>
+  recompute-no-older-than   = "<%= @config['continuous_queries']['recompute_no_older_than'] %>"
+  compute-runs-per-interval = <%= @config['continuous_queries']['compute_runs_per_interval'] %>
+  compute-no-more-than = "<%= @config['continuous_queries']['compute_no_more_than'] %>"
+  disabled = <%= @config['continuous_queries']['disabled'] %>
+
+[hinted-handoff]
+  enabled = <%= @config['hinted_handoff']['enabled'] %>
+  dir     = "<%= @config['hinted_handoff']['dir'] %>"
