@@ -1,9 +1,9 @@
 reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [meta]
-  dir = "<%= @config['meta']['dir'] %>"
+  dir = "<%= @data_path %>/meta"
   hostname = "<%= @config['meta']['hostname'] %>"
-  bind-address = "<%= @config['meta']['bind_address'] %>"
+  bind-address = ":8088"
   retention-autocreate = <%= @config['meta']['retention_autocreate'] %>
   election-timeout = "<%= @config['meta']['election_timeout'] %>"
   heartbeat-timeout = "<%= @config['meta']['heartbeat_timeout'] %>"
@@ -11,7 +11,7 @@ reporting-disabled = <%= @config['reporting_disabled'] %>
   commit-timeout = "<%= @config['meta']['commit_timeout'] %>"
 
 [data]
-  dir = "<%= @config['data']['dir'] %>"
+  dir = "<%= @data_path %>"
   max-wal-size = <%= @config['data']['max_wal_size'] %>
   wal-flush-interval = "<%= @config['data']['wal_flush_interval'] %>"
   wal-partition-flush-delay = "<%= @config['data']['wal_partition_flush_delay'] %>"
@@ -22,6 +22,7 @@ reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [cluster]
   shard-writer-timeout = "<%= @config['cluster']['shard_writer_timeout'] %>"
+  write-timeout = "<%= @config['cluster']['writer_timeout'] %>"
 
 [retention]
   enabled = <%= @config['retention']['enabled'] %>
@@ -34,11 +35,11 @@ reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [admin]
   enabled = <%= @config['admin']['enabled'] %>
-  bind-address = "<%= @config['admin']['bind_address'] %>"
+  bind-address = ":8083"
 
 [http]
   enabled = <%= @config['http']['enabled'] %>
-  bind-address = "<%= @config['http']['bind_address'] %>"
+  bind-address = ":8086"
   auth-enabled = <%= @config['http']['auth_enabled'] %>
   log-enabled = <%= @config['http']['log_enabled'] %>
   write-tracing = <%= @config['http']['write_tracing'] %>
@@ -46,7 +47,7 @@ reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [[graphite]]
   enabled = <%= @config['graphite']['enabled'] %>
-  bind-address = "<%= @config['graphite']['bind_address'] %>"
+  bind-address = ":2003"
   database = "<%= @config['graphite']['database'] %>"
   protocol = "<%= @config['graphite']['protocol'] %>"
   batch-size = <%= @config['graphite']['batch_size'] %>
@@ -56,23 +57,23 @@ reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [collectd]
   enabled = <%= @config['collectd']['enabled'] %>
-  bind-address = "<%= @config['collectd']['bind_address'] %>"
+  bind-address = ":25826"
   database = "<%= @config['collectd']['database'] %>"
   retention-policy = "<%= @config['collectd']['retention_policy'] %>"
   batch-size = <%= @config['collectd']['batch_size'] %>
   batch-timeout = "<%= @config['collectd']['batch_timeout'] %>"
-  typesdb = "<%= @config['collectd']['typesdb'] %>"
+  typesdb = "/usr/share/collectd/types.db"
 
 [opentsdb]
   enabled = <%= @config['opentsdb']['enabled'] %>
-  bind-address = "<%= @config['opentsdb']['bind_address'] %>"
+  bind-address = ":4242"
   database = "<%= @config['opentsdb']['database'] %>"
   retention-policy = "<%= @config['opentsdb']['retention_policy'] %>"
   consistency-level = "<%= @config['opentsdb']['consistency_level'] %>"
 
 [udp]
   enabled = <%= @config['udp']['enabled'] %>
-  bind-address = "<%= @config['udp']['bind_address'] %>"
+  bind-address = ":4444"
   database = "<%= @config['udp']['database'] %>"
   batch-size = <%= @config['udp']['batch_size'] %>
   batch-timeout = "<%= @config['udp']['batch_timeout'] %>"
@@ -90,7 +91,7 @@ reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [hinted-handoff]
   enabled = <%= @config['hinted_handoff']['enabled'] %>
-  dir = "<%= @config['hinted_handoff']['dir'] %>"
+  dir = "/var/opt/influxdb/hh"
   max-size = <%= @config['hinted_handoff']['max_size'] %>
   max-age = "<%= @config['hinted_handoff']['max_age'] %>"
   retry-rate-limit = <%= @config['hinted_handoff']['retry_rate_limit'] %>
