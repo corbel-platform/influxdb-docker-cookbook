@@ -91,7 +91,7 @@ reporting-disabled = <%= @config['reporting_disabled'] %>
 
 [hinted-handoff]
   enabled = <%= @config['hinted_handoff']['enabled'] %>
-  dir = "/var/opt/influxdb/hh"
+  dir = "<%= @data_path %>/hh"
   max-size = <%= @config['hinted_handoff']['max_size'] %>
   max-age = "<%= @config['hinted_handoff']['max_age'] %>"
   retry-rate-limit = <%= @config['hinted_handoff']['retry_rate_limit'] %>
