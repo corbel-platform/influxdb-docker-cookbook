@@ -25,6 +25,7 @@ template "#{node[:influxdb][:config_path]}/config.toml" do
 			:config => node[:influxdb][:config],
 			:data_path => node[:influxdb][:container_data_path]
 		})
+	force_unlink true
 	action :create
 	notifies :restart, "docker_container[influxdb]", :delayed
 end
